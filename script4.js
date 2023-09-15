@@ -1,13 +1,23 @@
 // https://github.com/bentoBAUX/Rhythm-of-Three_Threejs/blob/main/index.html
 
 var noise = new SimplexNoise();
-var audio = new Audio("src/audio/Yushh - Look Mum No Hands - 01 Look Mum No Hands.mp3"); //"/media/The-Stars.mp3"
-var play = false;
-console.log(audio)
+// var audio = new Audio("src/audio/Yushh - Look Mum No Hands - 01 Look Mum No Hands.mp3"); //"/media/The-Stars.mp3"
+
+const audio = document.getElementById('audio');
+    
+
+// var play = false;
+// console.log(audio)
 
 startViz();
 
-document.body.addEventListener('click', () => {
+// const container = document.getElementById('container');
+const playPauseButton = document.getElementById('playPauseButton');
+
+
+
+    const audioLoader = new THREE.AudioLoader();
+    playPauseButton.addEventListener('click', () => {
     //console.log("Play");
     if (isPlaying(audio)) {
         console.log("Pause");
@@ -45,7 +55,7 @@ function startViz() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor("#ffffff");
 
-    document.body.appendChild(renderer.domElement);
+    document.getElementById("sketch-container").appendChild( renderer.domElement );
 
 
     // AMBIENT LIGHT
