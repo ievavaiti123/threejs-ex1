@@ -1,7 +1,7 @@
 // https://github.com/bentoBAUX/Rhythm-of-Three_Threejs/blob/main/index.html
 
 var noise = new SimplexNoise();
-var audio = new Audio("/audio/Yushh - Look Mum No Hands - 01 Look Mum No Hands.mp3"); //"/media/The-Stars.mp3"
+var audio = new Audio("src/audio/Yushh - Look Mum No Hands - 01 Look Mum No Hands.mp3"); //"/media/The-Stars.mp3"
 var play = false;
 console.log(audio)
 
@@ -76,11 +76,11 @@ function startViz() {
     // TEXTURES
     const textureLoader = new THREE.TextureLoader();
 
-    const waterBaseColor = textureLoader.load("textures/Water_002_COLOR.jpg");
-    const waterNormalMap = textureLoader.load("textures/Water_002_NORM.jpg");
-    const waterHeightMap = textureLoader.load("textures/Water_002_DISP.png");
-    const waterRoughness = textureLoader.load("textures/Water_002_ROUGH.jpg");
-    const waterAmbientOcclusion = textureLoader.load("textures/Water_002_OCC.jpg");
+    const waterBaseColor = textureLoader.load("src/textures/Water_002_COLOR.jpg");
+    const waterNormalMap = textureLoader.load("src/textures/Water_002_NORM.jpg");
+    const waterHeightMap = textureLoader.load("src/textures/Water_002_DISP.png");
+    const waterRoughness = textureLoader.load("src/textures/Water_002_ROUGH.jpg");
+    const waterAmbientOcclusion = textureLoader.load("src/textures/Water_002_OCC.jpg");
 
 
     var geometry = new THREE.SphereGeometry(30, 50, 50);
