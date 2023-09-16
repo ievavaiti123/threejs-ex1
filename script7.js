@@ -1,57 +1,14 @@
 // https://github.com/bentoBAUX/Rhythm-of-Three_Threejs/blob/main/index.html
 
 let noise = new SimplexNoise();
-let audio = new Audio("src/audio/Yushh - Look Mum No Hands - 01 Look Mum No Hands.mp3"); //"/media/The-Stars.mp3"
+let audio = new Audio("/src/audio/Yushh - Look Mum No Hands - 01 Look Mum No Hands.mp3"); 
 
-// const audio = document.getElementById('audio');
-
-// const listener = new THREE.AudioListener();
-// const sound = new THREE.Audio( listener );
-// const audioLoader = new THREE.AudioLoader();
-
-// let play = false;
-// console.log(audio)
 
 startViz();
 
 
-
-
-
 function startViz() {
-    //audio anayser setup
-
-    // const container = document.getElementById('container');
-const playPauseButton = document.getElementById('playPauseButton');
-
-    //const audioLoader = new THREE.AudioLoader();
-    playPauseButton.addEventListener('click', () => {
   
-    if (isPlaying(audio)) {
-        console.log("Pause");
-        audio.pause();
-        playPauseButton.textContent = "Play";
-    } else {
-        console.log("Play");
-        audio.play();
-        playPauseButton.textContent = "Pause";
-    }
-});
-
-function isPlaying(audioIn) {
-    return !audioIn.paused;
-}
-
-
-    let context = new AudioContext();
-    let src = context.createMediaElementSource(audio);
-    let analyser = context.createAnalyser();
-    src.connect(analyser);
-    analyser.connect(context.destination);
-    analyser.fftSize = 512;
-    let bufferLength = analyser.frequencyBinCount;
-    let dataArray = new Uint8Array(bufferLength);
-
     //webgl
     let scene = new THREE.Scene();
     let group = new THREE.Group();
@@ -66,6 +23,36 @@ function isPlaying(audioIn) {
 
     document.getElementById("sketch-container").appendChild( renderer.domElement );
 
+
+    //play function
+    const playPauseButton = document.getElementById('playPauseButton');
+
+    playPauseButton.addEventListener('click', () => {
+
+        if (isPlaying(audio)) {
+            console.log("Pause");
+            audio.pause();
+            playPauseButton.textContent = "Play";
+        } else {
+            console.log("Play");
+            audio.play();
+            playPauseButton.textContent = "Pause";
+        }
+    });
+
+    function isPlaying(audioIn) {
+        return !audioIn.paused;
+    }
+
+    //analyser
+    let context = new AudioContext();
+    let src = context.createMediaElementSource(audio);
+    let analyser = context.createAnalyser();
+    src.connect(analyser);
+    analyser.connect(context.destination);
+    analyser.fftSize = 512;
+    let bufferLength = analyser.frequencyBinCount;
+    let dataArray = new Uint8Array(bufferLength);
 
     // AMBIENT LIGHT
     scene.add(new THREE.AmbientLight(0xffffff, 0.5));
