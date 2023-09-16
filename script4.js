@@ -22,9 +22,11 @@ const playPauseButton = document.getElementById('playPauseButton');
     if (isPlaying(audio)) {
         console.log("Pause");
         audio.pause();
+        playPauseButton.textContent = "Play";
     } else {
         console.log("Play");
         audio.play();
+        playPauseButton.textContent = "Pause";
     }
 });
 
