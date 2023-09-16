@@ -1,22 +1,32 @@
 // https://github.com/bentoBAUX/Rhythm-of-Three_Threejs/blob/main/index.html
 
 let noise = new SimplexNoise();
-// let audio = new Audio("src/audio/Yushh - Look Mum No Hands - 01 Look Mum No Hands.mp3"); //"/media/The-Stars.mp3"
+let audio = new Audio("src/audio/Yushh - Look Mum No Hands - 01 Look Mum No Hands.mp3"); //"/media/The-Stars.mp3"
 
-const audio = document.getElementById('audio');
-    
+// const audio = document.getElementById('audio');
+
+// const listener = new THREE.AudioListener();
+// const sound = new THREE.Audio( listener );
+// const audioLoader = new THREE.AudioLoader();
 
 // let play = false;
 // console.log(audio)
 
 startViz();
 
-// const container = document.getElementById('container');
+
+
+
+
+function startViz() {
+    //audio anayser setup
+
+    // const container = document.getElementById('container');
 const playPauseButton = document.getElementById('playPauseButton');
 
-    const audioLoader = new THREE.AudioLoader();
+    //const audioLoader = new THREE.AudioLoader();
     playPauseButton.addEventListener('click', () => {
-    //console.log("Play");
+  
     if (isPlaying(audio)) {
         console.log("Pause");
         audio.pause();
@@ -33,8 +43,6 @@ function isPlaying(audioIn) {
 }
 
 
-function startViz() {
-    //audio anayser setup
     let context = new AudioContext();
     let src = context.createMediaElementSource(audio);
     let analyser = context.createAnalyser();
@@ -50,6 +58,7 @@ function startViz() {
     let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 100;
     scene.add(camera);
+
 
     let renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
