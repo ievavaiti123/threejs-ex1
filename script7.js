@@ -1,7 +1,7 @@
 // https://github.com/bentoBAUX/Rhythm-of-Three_Threejs/blob/main/index.html
 
 let noise = new SimplexNoise();
-let audio = new Audio("/src/audio/Yushh - Look Mum No Hands - 01 Look Mum No Hands.mp3"); 
+let audio = new Audio("src/audio/Yushh - Look Mum No Hands - 01 Look Mum No Hands.mp3"); 
 
 
 startViz();
